@@ -1,0 +1,55 @@
+debug: false
+
+feign:
+  hystrix:
+    enabled: true
+
+
+
+spring:
+  application:
+    name: test
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+      preferred-networks:
+        - 10.0
+    consul:
+      host: localhost
+      port: 8500
+  datasource:
+    url: jdbc:mysql://192.168.31.211:3306/atest_yantao?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root,123
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+
+#  rabbitmq:
+#    host: 192.168.31.2
+#    port: 5672
+#    username: likspace_user
+#    password: likone,123
+#    redis 缓存
+  redis:
+    host: 192.168.31.2
+    port: 6379
+    database: 0
+    password:
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: 0
+#  flyway:
+#    encoding: UTF-8
+#    locations: classpath:/db/migration
+
+server:
+  port: 9001
